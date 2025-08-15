@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tahameer | Cybersecurity Architect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00ff88;
+            --secondary: #7df9ff;
+            --dark: #0a192f;
+            --light: #ccd6f6;
+            --accent: #ff4d5b;
+            --neon-glow: 0 0 15px var(--primary);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Particle Background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* Enhanced Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 4rem 0;
+            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .profile-container {
+            position: relative;
+            width: 330px;
+            height: 330px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            padding: 5px;
+            animation: float 6s ease-in-out infinite;
+            filter: drop-shadow(var(--neon-glow));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid var(--dark);
+            transition: transform 0.3s ease;
+        }
+
+        /* Animated Text Effects */
+        .tagline {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .name {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+            text-shadow: 0 0 15px rgba(0,255,136,0.4);
+            position: relative;
+        }
+
+        .name::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+        }
+
+        .bio {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Enhanced Project Cards */
+        .projects-section {
+            padding: 6rem 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .project-card {
+            position: relative;
+            background: rgba(17,34,64,0.8);
+            border-radius: 15px;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            overflow: hidden;
+            border: 1px solid rgba(0,255,136,0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) rotateX(10deg) rotateY(5deg);
+            box-shadow: 0 25px 50px rgba(0,255,136,0.3);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, var(--primary), transparent);
+            animation: rotate 6s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .project-content {
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(145deg, #0a192f, #112240);
+            padding: 2.5rem;
+            border-radius: 12px;
+            height: 100%;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Skills Section */
+        .skills-section {
+            padding: 6rem 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .skills-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            padding: 0 2rem;
+        }
+
+        .skill-card {
+            position: relative;
+            text-align: center;
+            padding: 2.5rem;
+            background: linear-gradient(145deg, #112240, #0a192f);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,255,136,0.2);
+            overflow: hidden;
+        }
+
+        .skill-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,255,136,0.2);
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, var(--primary), transparent);
+            animation: rotate 6s linear infinite;
+            opacity: 0.15;
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            padding: 6rem 0;
+            background: rgba(17,34,64,0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            width: 50%;
+            background: transparent;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 2rem;
+            background: rgba(17,34,64,0.8);
+            border-radius: 15px;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .social-link {
+            position: relative;
+            font-size: 2rem;
+            color: var(--light);
+            transition: all 0.3s ease;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .social-link:hover {
+            color: var(--primary);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 0 15px var(--primary);
+            background: transparent;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+#about {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 30px;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    z-index: 2;
+    position: relative;
+}
+#about h2 {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: var(--primary);
+}
+
+
+
+/*        #about {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 30px;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    z-index: 2;
+    position: relative;
+    background: rgba(17, 34, 64, 0.6);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+}
+#about h2 {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: var(--primary);
+}*/
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .profile-container {
+                width: 250px;
+                height: 250px;
+            }
+            .name {
+                font-size: 3rem;
+            }
+            .timeline::after {
+                left: 31px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            #about {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 40px 20px;
+                line-height: 1.8;
+                font-size: 1.1rem;
+            }
+
+            #about h2 {
+                font-size: 2rem;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <div id="particles-js"></div>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="profile-container reveal active">
+                <img src="TahameerImg1.jpg" alt="M.S. Tahameer" class="profile-img">
+            </div>
+            <div class="hero-text">
+                <p class="tagline reveal active">Aspiring Cybersecurity Engineer</p>
+                <h1 class="name reveal active">M.S. Tahameer</h1>
+                <p class="bio reveal active"> “Hackers rarely have full knowledge of the technology stack of a target.” 
+                    <br>— John McAfee</p>
+            </div>
+        </div>
+    </section>
+
+     <!-- Summary Section -->
+ <section id="about">
+  <h2>👨‍💻 About Me</h2>
+  <p style="text-align: justify;">
+    I'm <strong>M.S. Tahameer</strong>, a passionate and hands-on <strong>Cybersecurity and Networking</strong> enthusiast 
+    currently pursuing my B.Tech in Information Technology at 
+    <strong>Gokaraju Rangaraju Institute of Engineering and Technology (GRIET)</strong>.
+    With a sharp focus on ethical hacking, phishing defense, and secure systems, 
+    I've worked on real-world cybersecurity tools like <em>USB Rubber Ducky Payloads</em>, 
+    <em>Wi-Fi Deauth & Evil Twin Attacks</em>, <em>AI-Powered Phishing Email Classifier</em> and even an <em>Secure URL Scanner</em>.
+  </p>
+<br>
+  <p style="text-align: justify;">
+    My internship at <strong>DRDL-DRDO</strong> sharpened my skills in <strong>VLAN configuration</strong>, 
+    vulnerability scanning using tools like <strong>Nmap</strong> and <strong>Nessus</strong>, and 
+    shell scripting for task automation. As a <strong>Cisco Certified</strong> learner and 
+    an active community leader (<em>General Secretary of the X-Kernel Club</em>), 
+    I combine technical excellence with strong leadership and collaboration.
+  </p>
+<br>
+  <p style="text-align: justify;">
+    I thrive in environments where <strong>security</strong>, <strong>innovation</strong>, 
+    and <strong>real-world problem solving</strong> come together.
+  </p>
+</section>
+
+<h1 style="text-align: center; color: var(--primary);">📜Projects!</h1>
+
+    <!-- Projects Section -->
+    <section class="projects-section">
+        <div class="projects-grid">
+            <div class="project-card reveal">
+                <div class="project-content">
+                    <h3>USB Rubber Ducky Project</h3>
+                    <p>Advanced penetration testing toolkit demonstrating wireless network vulnerabilities</p> <br>
+                    <div class="tech-stack">
+                        <span>Ducky Script | </span>
+                        <span>Webhooks | </span>
+                        <span>DigiSpark | </span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card reveal">
+                <div class="project-content">
+                    <h3>Wi-Fi Deauthocation And Evil-Twin</h3>
+                    <p>Advanced IOT penetration testing demonstrating wireless network vulnerabilities</p><br>
+                    <div class="tech-stack">
+                        <span>Node MCU | </span>
+                        <span>ESP8266 | </span>
+                        <span>Wi-Fi Attacks | </span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card reveal">
+                <div class="project-content">
+                    <h3>AI-Powered Phishing Detection Website</h3>
+                    <p>My Part of work is Research, Testing & Refinement:-I built mock phishing sites/URLs, captured real attack data (e.g., timestamps, IPs,credentials), and fine-tuned detection rules</p><br>
+                    <div class="tech-stack">
+                        <span>AI | </span>
+                        <span>Phishing Websites | </span>
+                        <span>Phishing E-mails | </span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card reveal">
+                <div class="project-content">
+                    <h3>Sceure URL Scanner(Linux Terminal Tool)</h3>
+                    <p>Developed a Dockerized URL scanning tool to analyze and report on the safety of URLs using multiple APIs and open-source libraries.</p><br>
+                    <div class="tech-stack">
+                        <span>Google Safe Browsing API | </span>
+                        <span>VirusTotal API Integration | </span>
+                        <span>SSL Certificate Inspection | </span>
+                        <span>Redirect Detection | </span>
+                        <span>IP geolocation | </span>
+                        <span>Automated Screenshots in Docker Env. | </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add more project cards -->
+        </div>
+    </section>
+
+<h1 style="text-align: center; color: var(--primary);">🥷Skills!</h1>
+
+    <!-- Skills Section -->
+    <section class="skills-section">
+        <div class="skills-container">
+            <div class="skill-card reveal">
+                <i class="fas fa-shield-alt skill-icon"></i>
+                <h3>Vulnerability Assessment</h3>
+                <p>NMAP • Nessus • OSINT</p>
+            </div>
+            <div class="skill-card reveal">
+                <i class="fas fa-shield-alt skill-icon"></i>
+                <h3>Open-Source Intelligence</h3>
+                <p>OSINT Tools • Browsering Seach Engines • Presentations</p>
+            </div>
+            <div class="skill-card reveal">
+                <i class="fas fa-shield-alt skill-icon"></i>
+                <h3>Wi-Fi (ESP8266)</h3>
+                <p>Deauthentication • Evil-Twin • IoT</p>
+            </div>
+            <div class="skill-card reveal">
+                <i class="fas fa-shield-alt skill-icon"></i>
+                <h3>Phishing</h3>
+                <p>Phishing Email • Phishing Websites • AI-Phishing • Email Spoofing</p>
+            </div>
+            <div class="skill-card reveal">
+                <i class="fas fa-shield-alt skill-icon"></i>
+                <h3>Vulnerabilitys</h3>
+                <p>SQLi • XSS • CSRF • Command Injection</p>
+            </div>
+            <!-- Add more skill cards -->
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <h1 style="text-align: center; color: var(--primary);">📍Experience Map!</h1>
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <div class="timeline-content">
+                    <h3>DRDL - DRDO</h3>
+                    <p>Cybersecurity & Networking Intern</p>
+                    <ul>
+                        <li>Helped Optimizing network security for 100+ devices</li>
+                        <li>Automated Day-to-Day System Scanning</li>
+                    </ul>
+                </div>
+             </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-content">
+                    <h3>X-Kernel GRIET</h3>
+                    <p>General Secretary </p>
+                    <ul>
+                        <li>Leadership</li>
+                        <li>Team Management</li>
+                        <li>Cross-functional Team Leadership</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-content">
+                    <h3>ISTE GRIET</h3>
+                    <p>Member Relation Head</p>
+                    <ul>
+                        <li>Member Relations</li>
+                        <li>Member Management</li>
+                    </ul>
+                </div>
+            </div> 
+            <div class="timeline-item reveal">
+                <div class="timeline-content">
+                    <h3>NSS GRIET</h3>
+                    <p>Volunteer</p>
+                    <ul>
+                        <li>Blood Donation Volunteering</li>
+                        <li>Volunteering</li>
+                    </ul>
+                </div>
+            </div> 
+            <!-- Add timeline items -->
+        </div>
+    </section>
+
+<!-- Resume & CV Download Section -->
+<section class="resume-section" style="padding: 4rem 0; text-align: center; position: relative; z-index: 2;">
+    <h2 style="color: var(--primary); margin-bottom: 2.5rem; font-size: 2rem;">📄 Download My Resume & CV</h2>
+    <div style="display: flex; justify-content: center; align-items: center; gap: 2rem; flex-wrap: wrap; max-width: 600px; margin: 0 auto;">
+        <a href="resume.pdf" download class="social-link" style="display: flex; align-items: center; justify-content: center; padding: 1rem 2rem; font-size: 1.1rem; font-weight: 500; color: var(--dark); background-color: var(--primary); border-radius: 10px; text-decoration: none; box-shadow: 0 0 10px var(--primary); transition: transform 0.3s ease; min-width: 180px;">
+            <i class="fas fa-file-alt" style="margin-right: 0.5rem;"></i> Resume
+        </a>
+        <a href="cv.pdf" download class="social-link" style="display: flex; align-items: center; justify-content: center; padding: 1rem 2rem; font-size: 1.1rem; font-weight: 500; color: var(--dark); background-color: var(--primary); border-radius: 10px; text-decoration: none; box-shadow: 0 0 10px var(--primary); transition: transform 0.3s ease; min-width: 180px;">
+            <i class="fas fa-file-signature" style="margin-right: 0.5rem;"></i> CV
+        </a>
+    </div>
+</section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2>Keep The Learning Fire Burning🔥</h2>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/tahameer-ms-a952271b6?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bz0B50xDhSGmE68n2J5biDg%3D%3D" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/MSTahameer" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="mailto:mstahameer2004@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                <!-- <a href="#" class="social-link reveal"><i class="fab fa-instagram"></i></a> -->
+                <!-- <a href="#" class="social-link" data-toggle="tooltip" data-placement="bottom" title="Email"><i class="fas fa-envelope"></i></a> -->
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Scroll Animation Trigger
+        window.addEventListener('scroll', reveal);
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(item => {
+                const windowHeight = window.innerHeight;
+                const revealTop = item.getBoundingClientRect().top;
+                const revealPoint = 150;
+                if(revealTop < windowHeight - revealPoint) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize Particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80 },
+                color: { value: '#00ff88' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5 },
+                size: { value: 3 },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+    </script>
+</body>
+</html>
